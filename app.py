@@ -11,7 +11,6 @@ import json
 
 import logging
 
-import pycurl
 app = Flask(__name__)
 ACCESS_TOKEN = 'EAAgFgSzOWVIBAKwKnznEQMhyZB3NJv241QFeOvJ0Er5RvLMfgBR85Cc6peGmCyLdtgMSYYg7964cDIruILaRuWpWGC9chF7nE1jvmTy5h5HZB2CBCRZBf9XXecrm7DmpvybCDXhLkqnZBqwoYp9s1Q3bZBzvKKVMBFczyjKw5e3lUUfBPmQXH'
 VERIFY_TOKEN = 'cultivartec_token'
