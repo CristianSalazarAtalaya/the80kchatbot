@@ -1,6 +1,6 @@
 #Flask dependencies
 from flask import Blueprint, request
-
+import json
 #Project dependencies
 from config.config import ConfigFacebook
 
@@ -18,7 +18,15 @@ def facebook_challenge():
         print("validacion token")
         return verify_fb_token(token_sent)
     else:
-        print('intenó ???')
+        # get whatever message a user sent the bot
+        output = request.get_json()
+        
+        #encoded
+        data_string = json.dumps(output)
+
+        print(data_string)
+    return "Message Processed"
+
 
 
 #@facebook_webhook.route("/webhooks/facebook/", methods=['POST'])
