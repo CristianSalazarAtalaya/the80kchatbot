@@ -51,14 +51,14 @@ def receive_message():
         id = json.dumps(decoded['entry'][0]['id'])
         id= id.replace('"', '')
         object_id__ = json.dumps(decoded['object'])
-        comend_id = json.dumps(decoded['entry'][0]['changes'][0]['value']['comment_id'])
-        accss_token = 'EAAgFgSzOWVIBAKwKnznEQMhyZB3NJv241QFeOvJ0Er5RvLMfgBR85Cc6peGmCyLdtgMSYYg7964cDIruILaRuWpWGC9chF7nE1jvmTy5h5HZB2CBCRZBf9XXecrm7DmpvybCDXhLkqnZBqwoYp9s1Q3bZBzvKKVMBFczyjKw5e3lUUfBPmQXH'
-        comend_id_ = comend_id.replace('"', '')
+        #comend_id = json.dumps(decoded['entry'][0]['changes'][0]['value']['comment_id'])
+        #accss_token = 'EAAgFgSzOWVIBAKwKnznEQMhyZB3NJv241QFeOvJ0Er5RvLMfgBR85Cc6peGmCyLdtgMSYYg7964cDIruILaRuWpWGC9chF7nE1jvmTy5h5HZB2CBCRZBf9XXecrm7DmpvybCDXhLkqnZBqwoYp9s1Q3bZBzvKKVMBFczyjKw5e3lUUfBPmQXH'
+        #comend_id_ = comend_id.replace('"', '')
 
         object_id__ = object_id__.replace('"', '')
         print(id)
 
-        reply = "Hi I am your virtual assitant, you can call me Brayan"
+        #reply = "Hi I am your virtual assitant, you can call me Brayan"
         #para responder comentarios
         #"&parent_comment_id="+parent_id+
         #+"&object_id="+id
