@@ -37,7 +37,7 @@ def facebook_challenge():
         recipient_id=dataentry["messaging"][0]["sender"]["id"]
         print(recipient_id)
         print("*************************mensaje*****")
-        print(recipient_id["messaging"][0]["message"]["text"])
+        print(dataentry["messaging"][0]["message"]["text"])
         #encoded
         #data_string = json.dumps(output)
         bot = Bot(facebook_config.ACCESS_TOKEN)
