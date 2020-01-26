@@ -9,6 +9,11 @@ facebook_webhook = Blueprint('facebook_webhook', __name__)
 
 facebook_config = ConfigFacebook()
 
+
+from pymessenger.bot import Bot
+
+
+
 @facebook_webhook.route("/webhooks/facebook/", methods=['GET','POST'])
 def facebook_challenge():
     if request.method == 'GET':
@@ -20,10 +25,11 @@ def facebook_challenge():
     else:
         # get whatever message a user sent the bot
         output = request.get_json()
-        
+        recipient_id = output["entry"]["uid"]
         #encoded
         data_string = json.dumps(output)
-
+        bot = Bot(facebook_config.ACCESS_TOKEN)
+        bot.send_text_message(recipient_id, "Rata")
         print(data_string)
     return "Message Processed"
 
