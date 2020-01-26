@@ -8,6 +8,7 @@ from routes.webhook_facebook import facebook_webhook
 import logging
 
 app = Flask(__name__)
+#db = SQLAlchemy(app)
 
 app.register_blueprint(facebook_webhook)
 
