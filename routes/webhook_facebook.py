@@ -29,7 +29,9 @@ def facebook_challenge():
         print(output)
         #output = request.get_json()
         #recipient_id = output["entry"]["uid"]
+        print("output[entry][0]")
         dataentry = output["entry"][0]
+        print("*************************entry*****")
         print(dataentry)
         print("*************************id*****")
         recipient_id=dataentry["messaging"][0]["sender"]["id"]
