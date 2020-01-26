@@ -3,6 +3,7 @@ from flask import Blueprint, request
 import json
 #Project dependencies
 from config.config import ConfigFacebook
+from apis.watson import MensajeResponse
 
 #Blueprint
 facebook_webhook = Blueprint('facebook_webhook', __name__)
@@ -12,7 +13,8 @@ facebook_config = ConfigFacebook()
 
 from pymessenger.bot import Bot
 
-
+#mensaje = MensajeResponse("Hola tio")
+#print(mensaje.text)taa
 
 @facebook_webhook.route("/webhooks/facebook/", methods=['GET','POST'])
 def facebook_challenge():
@@ -37,11 +39,14 @@ def facebook_challenge():
         recipient_id=dataentry["messaging"][0]["sender"]["id"]
         print(recipient_id)
         print("*************************mensaje*****")
-        print(dataentry["messaging"][0]["message"]["text"])
+        datamessage =dataentry["messaging"][0]["message"]["text"]
+        print(datamessage)
         #encoded
+        mensaje = MensajeResponse(datamessage)
+        #print(mensaje.text)taa
         #data_string = json.dumps(output)
         bot = Bot(facebook_config.ACCESS_TOKEN)
-        bot.send_text_message(recipient_id, "Rata")
+        bot.send_text_message(recipient_id, mensaje.text)
         #print(data_string)
     return "Message Processed"
 
