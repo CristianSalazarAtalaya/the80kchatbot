@@ -25,13 +25,21 @@ def facebook_challenge():
     else:
         # get whatever message a user sent the bot
         print("intento")
-        print(request.get_json())
+        output = request.get_json()
+        print(output)
         #output = request.get_json()
         #recipient_id = output["entry"]["uid"]
+        dataentry = output["entry"]
+        print(dataentry)
+        print("*************************id*****")
+        recipient_id=dataentry["messaging"]["sender"]["id"]
+        print(recipient_id)
+        print("*************************mensaje*****")
+        print(recipient_id["messaging"]["message"]["text"])
         #encoded
         #data_string = json.dumps(output)
-        # bot = Bot(facebook_config.ACCESS_TOKEN)
-        #bot.send_text_message(recipient_id, "Rata")
+        bot = Bot(facebook_config.ACCESS_TOKEN)
+        bot.send_text_message(recipient_id, "Rata")
         #print(data_string)
     return "Message Processed"
 
