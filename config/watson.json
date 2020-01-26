@@ -1,0 +1,9 @@
+{
+  "page": "The 80k Company",
+  "credentials": {
+    "autenticator": "xTGv8CzUcIF7Jj08W8Ui5n8HJ9Ilv7O4MVVmXcnPkOAL",
+    "version": "2019-02-28",
+    "workspaceid": "6dae5464-8ffe-4702-b7a9-35091af6ad5b",
+    "url": "https://gateway.watsonplatform.net/assistant/api"
+  }
+}

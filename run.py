@@ -1,4 +1,8 @@
-from apis.watson import MensajeResponse
+#from apis.watson import MensajeResponse
 
-mensaje = MensajeResponse("Hola tio")
-print(mensaje.text)
+from config.config import ConfigWatson
+#mensaje = MensajeResponse("Hola tio")
+#print(mensaje.text)taa
+
+data = ConfigWatson()
+print(data.url)
