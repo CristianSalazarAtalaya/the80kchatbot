@@ -13,6 +13,6 @@ app = Flask(__name__)
 app.register_blueprint(facebook_webhook)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0",port=443,ssl_context=('cert.pem', 'key.pem'))
+    app.run(host="0.0.0.0",port=443,ssl_context=('/etc/letsencrypt/live/develop.botslabperu.com/fullchain.pem', '/etc/letsencrypt/live/develop.botslabperu.com/privkey.pem'))
     #app.run()
 
