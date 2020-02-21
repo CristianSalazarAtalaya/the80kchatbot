@@ -12,16 +12,16 @@ select GetIdCliente()
 
 --Proc Insertar cliente
 ---------------------------------------------------------------------------------------------------
-create function InsertarCliente(cliente_id int,fecha_registro date,user_id_app varchar,
+create function InsertarCliente(fecha_registro date,user_id_app varchar,
 user_location varchar, user_sex int,canal varchar, mobil varchar, fl_activo int) returns void
 as
 $$
-insert into cliente (cliente_id,fecha_registro,user_id_app,user_location,user_sex,canal,mobil,fl_activo)
-values (cliente_id,fecha_registro ,user_id_app ,user_location, user_sex,canal, mobil, fl_activo);
+insert into cliente (fecha_registro,user_id_app,user_location,user_sex,canal,mobil,fl_activo)
+values (fecha_registro ,user_id_app ,user_location, user_sex,canal, mobil, fl_activo);
 $$
 language sql
 ---------------------------------------------------------------------------------------------------
-select InsertarCliente(3,to_date('19022020','ddmmyyyy'),'100','lima',1,'Facebook','994755412',1)
+select InsertarCliente(to_date('19022020','ddmmyyyy'),'100','lima',1,'Facebook','994755412',1)
 ---------------------------------------------------------------------------------------------------
 
 
@@ -78,13 +78,13 @@ select EliminarCliente(2)
 --INSERT CABECERA
 ---------------------------------------------------------------------------------------------------
 
-create function Insertar_Facebook_Chat (_chat_id int,_usuario_id int,
+create function Insertar_Facebook_Chat (_usuario_id int,
 _usuario_nombre varchar,_fecha_registro date,fecha_actualizacion date,_usuario_cierre int,_estado int,_observacion text) returns void
 as
 $$
 insert into tbl_facebook_chat
-(chat_id,usuario_id,usuario_nombre,fecha_registro,fecha_actualizacion,usuario_cierre,estado,observacion)
-values(_chat_id,_usuario_id,_usuario_nombre,_fecha_registro,fecha_actualizacion,_usuario_cierre,_estado,_observacion)
+(usuario_id,usuario_nombre,fecha_registro,fecha_actualizacion,usuario_cierre,estado,observacion)
+values(_usuario_id,_usuario_nombre,_fecha_registro,fecha_actualizacion,_usuario_cierre,_estado,_observacion)
 $$
 language sql
 
@@ -94,12 +94,12 @@ language sql
 ---------------------------------------------------------------------------------------------------
 
 
-create function InsertarDetalle(_chat_detail_id int, _chat_id int, _fuente_id int, _tiempo_llegada date, _tiempo_registro date, _detalle_mensaje text) returns void
+create function InsertarDetalle(_chat_id int, _fuente_id int, _tiempo_llegada date, _tiempo_registro date, _detalle_mensaje text) returns void
 as
 $$
-insert into tbl_facebook_chat_det (chat_detail_id,chat_id,fuente_id,tiempo_llegada,tiempo_registro,detalle_mensaje
+insert into tbl_facebook_chat_det (chat_id,fuente_id,tiempo_llegada,tiempo_registro,detalle_mensaje
 )values(
-_chat_detail_id,_chat_id,_fuente_id,_tiempo_llegada,_tiempo_registro,_detalle_mensaje
+_chat_id,_fuente_id,_tiempo_llegada,_tiempo_registro,_detalle_mensaje
 )
 $$
 language sql
