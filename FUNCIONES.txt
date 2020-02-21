@@ -1,0 +1,106 @@
+--Obtener el id del cliente
+---------------------------------------------------------------------------------------------------
+create function GetIdCliente() returns bigint
+as
+$$
+select count(*)+1 from cliente
+$$
+language sql
+---------------------------------------------------------------------------------------------------
+select GetIdCliente()
+---------------------------------------------------------------------------------------------------
+
+--Proc Insertar cliente
+---------------------------------------------------------------------------------------------------
+create function InsertarCliente(cliente_id int,fecha_registro date,user_id_app varchar,
+user_location varchar, user_sex int,canal varchar, mobil varchar, fl_activo int) returns void
+as
+$$
+insert into cliente (cliente_id,fecha_registro,user_id_app,user_location,user_sex,canal,mobil,fl_activo)
+values (cliente_id,fecha_registro ,user_id_app ,user_location, user_sex,canal, mobil, fl_activo);
+$$
+language sql
+---------------------------------------------------------------------------------------------------
+select InsertarCliente(3,to_date('19022020','ddmmyyyy'),'100','lima',1,'Facebook','994755412',1)
+---------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+--UPDATE CLIENTE
+---------------------------------------------------------------------------------------------------
+create function ActualizarCliente(_cliente_id int,_fecha_registro date,_user_id_app varchar,
+_user_location varchar, _user_sex int,_canal varchar, _mobil varchar) returns void
+as
+$$
+update cliente set
+fecha_registro=_fecha_registro,
+user_id_app=_user_id_app,
+user_location=_user_location,
+user_sex=_user_sex,
+canal=_canal,
+mobil=_mobil
+where cliente_id=_cliente_id
+$$
+language sql
+---------------------------------------------------------------------------------------------------
+select  ActualizarCliente(3,to_date('19022020','ddmmyyyy'),'100','lima',1,'wasap','994755412')
+---------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------
+--Eliminar cliente
+---------------------------------------------------------------------------------------------------
+create function EliminarCliente(_cliente_id int) returns void
+as
+$$
+update cliente set
+fl_activo=0
+where cliente_id=_cliente_id
+$$
+language sql
+---------------------------------------------------------------------------------------------------
+select EliminarCliente(2)
+---------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------
+--TABLA FACEBOOK CHAT
+---------------------------------------------------------------------------------------------------
+
+
+
+
+
+---------------------------------------------------------------------------------------------------
+--INSERT CABECERA
+---------------------------------------------------------------------------------------------------
+
+create function Insertar_Facebook_Chat (_chat_id int,_usuario_id int,
+_usuario_nombre varchar,_fecha_registro date,fecha_actualizacion date,_usuario_cierre int,_estado int,_observacion text) returns void
+as
+$$
+insert into tbl_facebook_chat
+(chat_id,usuario_id,usuario_nombre,fecha_registro,fecha_actualizacion,usuario_cierre,estado,observacion)
+values(_chat_id,_usuario_id,_usuario_nombre,_fecha_registro,fecha_actualizacion,_usuario_cierre,_estado,_observacion)
+$$
+language sql
+
+
+---------------------------------------------------------------------------------------------------
+--INSERT DETALLE
+---------------------------------------------------------------------------------------------------
+
+
+create function InsertarDetalle(_chat_detail_id int, _chat_id int, _fuente_id int, _tiempo_llegada date, _tiempo_registro date, _detalle_mensaje text) returns void
+as
+$$
+insert into tbl_facebook_chat_det (chat_detail_id,chat_id,fuente_id,tiempo_llegada,tiempo_registro,detalle_mensaje
+)values(
+_chat_detail_id,_chat_id,_fuente_id,_tiempo_llegada,_tiempo_registro,_detalle_mensaje
+)
+$$
+language sql
+

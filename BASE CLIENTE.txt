@@ -1,0 +1,58 @@
+CREATE TABLE cliente
+( 
+	cliente_id          serial,
+	fecha_registro		date,
+	user_id_app			varchar(100),
+	user_location		varchar(100),
+	user_sex			int,
+	canal				varchar(100),
+	mobil				varchar(20),
+	fl_activo           int
+);
+ALTER TABLE cliente ADD PRIMARY KEY (cliente_id);
+
+--TABLA: chat
+
+create table tbl_Facebook_Chat(
+chat_id				serial,
+usuario_id			int,
+usuario_nombre		varchar(100),
+fecha_registro		date, --inicio
+fecha_actualizacion		date,--fin
+usuario_cierre		int, --usuario que cerro -- se creara un usuario 			     --generico
+estado			int,
+observacion		text
+);
+ALTER TABLE tbl_Facebook_Chat ADD PRIMARY KEY (chat_id);
+
+--CHAT_USER_WATSON_DETAIL
+create table tbl_Facebook_Chat_Det(
+chat_detail_id		serial,
+chat_id				int,
+fuente_id			int default 1, --(asistente, user, watson)
+tiempo_llegada		date,
+tiempo_registro		date,
+detalle_mensaje		text
+);
+ALTER TABLE tbl_Facebook_Chat_Det ADD PRIMARY KEY (chat_detail_id);
+ALTER TABLE tbl_Facebook_Chat_Det ADD CONSTRAINT fk_tbl_Facebook_Chat_id_det
+FOREIGN KEY (chat_id) REFERENCES tbl_Facebook_Chat (chat_id);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
